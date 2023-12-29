@@ -6,8 +6,11 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var tdlRouter = require('./routes/tdl')
 
 var app = express();
+var cors = require('cors')
+app.use(cors())
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -21,6 +24,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/', tdlRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -37,5 +41,16 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.render('error');
 });
+
+let mongoose = require('mongoose')
+let dbUrl = "mongodb://127.0.0.1:27017/"
+let dbName = "Todo"
+
+mongoose.connect(dbUrl+dbName).then(()=>{
+    console.log("Connected to Database...");
+}).catch((err)=>{
+    console.log("Error in connection "+err);
+})
+
 
 module.exports = app;
