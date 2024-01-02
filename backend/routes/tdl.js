@@ -16,9 +16,9 @@ router.get("/display",async(req,res)=>{
 })
 
 router.post("/addtask",async(req,res)=>{
-  try{
     const { sno, task, date, time } = req.body;
 
+  try{
     const newTask = new TaskModel({
         sno,
         task,
@@ -32,5 +32,26 @@ router.post("/addtask",async(req,res)=>{
     res.status(400).json({ message: err.message });
   }
 })
+
+
+router.post("/edittask", async (req, res) => {
+  const { taskId, sno, task, date, time } = req.body;
+
+  try {
+      const updatedTask = await TaskModel.findByIdAndUpdate(
+          taskId,
+          { sno, task, date, time },
+          { new: true }
+      );
+
+      if (!updatedTask) {
+          return res.status(404).json({ message: "Task not found" });
+      }
+
+      res.json(updatedTask);
+  } catch (err) {
+      res.status(400).json({ message: err.message });
+  }
+});
 
 module.exports = router
