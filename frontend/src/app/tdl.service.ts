@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,10 @@ import { Injectable } from '@angular/core';
 })
 export class TdlService {
 
-  constructor() { }
+  constructor(private httpclient: HttpClient){
+    
+   }
+   getAlltasks(){
+    return this.httpclient.get('http://localhost:3000/display')
+   }
 }
