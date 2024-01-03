@@ -12,4 +12,8 @@ export class TdlService {
    getAlltasks(){
     return this.httpclient.get('http://localhost:3000/display')
    }
+
+   deleteTask(task: any){
+    return this.httpclient.post('http://localhost:3000/deletetask',task)
+   }
 }
