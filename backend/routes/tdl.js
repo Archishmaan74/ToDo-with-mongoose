@@ -35,12 +35,12 @@ router.post("/addtask",async(req,res)=>{
 
 
 router.post("/edittask", async (req, res) => {
-  const { taskId, sno, task, date, time } = req.body;
+  const { sno, task, date, time } = req.body;
 
   try {
-      const updatedTask = await TaskModel.findByIdAndUpdate(
-          taskId,
-          { sno, task, date, time },
+      const updatedTask = await TaskModel.findOneAndUpdate(
+          { sno: sno },
+          { task, date, time },
           { new: true }
       );
 
