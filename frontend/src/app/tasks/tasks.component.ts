@@ -15,4 +15,10 @@ export class TasksComponent {
       console.log("Cannot get tasks...");
     })
   }
+
+  deleteTask(task: any){
+    this.tdlservice.deleteTask(task).subscribe(task)
+    location.reload()
+    alert("Task deleted successfully!")
+  }
 }
