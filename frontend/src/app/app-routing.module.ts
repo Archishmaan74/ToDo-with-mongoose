@@ -5,6 +5,9 @@ import { AddtaskComponent } from './addtask/addtask.component';
 
 const routes: Routes = [
   {
+    path: '',component: TasksComponent
+  },
+  {
     path: 'tasks', component: TasksComponent
   },
   {
