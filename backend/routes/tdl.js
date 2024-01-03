@@ -54,4 +54,20 @@ router.post("/edittask", async (req, res) => {
   }
 });
 
+router.post("/deletetask", async (req, res) => {
+  const { sno } = req.body;
+
+  try {
+      const deletedTask = await TaskModel.findOneAndDelete({ sno: sno });
+
+      if (!deletedTask) {
+          return res.status(404).json({ message: "Task not found" });
+      }
+
+      res.json({ message: "Task deleted successfully" });
+  } catch (err) {
+      res.status(400).json({ message: err.message });
+  }
+});
+
 module.exports = router
