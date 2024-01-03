@@ -12,7 +12,7 @@ let TaskSchema = mongoose.Schema({
 let TaskModel = mongoose.model("tasks", TaskSchema)
 
 router.get("/display",async(req,res)=>{
-    res.send(await TaskModel.find({}))
+    res.send(await TaskModel.find())
 })
 
 router.post("/addtask",async(req,res)=>{
