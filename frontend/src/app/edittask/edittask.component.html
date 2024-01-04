@@ -1,1 +1,11 @@
-<p>edittask works!</p>
+<div style="text-align: center;">
+    <h2>Edit Task</h2>
+</div><hr>
+<div class="container-fluid" style="width: 700px; text-align: center; margin-top: 50px;background-color:bisque;"><br>
+   S.No: <input type="text" [(ngModel)]="task.sno" readonly><br><br>
+   Task: <input style="margin-left: 4px;" type="text" [(ngModel)]="task.task" required><br><br>
+   Date: <input type="text" [(ngModel)]="task.date" required><br><br>
+   Time: <input type="text" [(ngModel)]="task.time" required><br><br>
+   <button class="btn btn-outline-primary" (click)="editTask(task)" [routerLink]="['/tasks']">Edit</button>
+   <br><br>
+</div>
