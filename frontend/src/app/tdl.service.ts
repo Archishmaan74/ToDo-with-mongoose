@@ -17,6 +17,10 @@ export class TdlService {
     return this.httpclient.post('http://localhost:3000/addtask',task)
    }
 
+   editTask(task: any){
+    return this.httpclient.post('http://localhost:3000/edittask',task)
+   }
+
    deleteTask(task: any){
     return this.httpclient.post('http://localhost:3000/deletetask',task)
    }
