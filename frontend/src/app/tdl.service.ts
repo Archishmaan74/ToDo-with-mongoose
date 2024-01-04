@@ -13,6 +13,10 @@ export class TdlService {
     return this.httpclient.get('http://localhost:3000/display')
    }
 
+   getEditTask(sno: any){
+    return this.httpclient.get('http://localhost:3000/displayone/'+sno)
+   }
+
    addTask(task: any){
     return this.httpclient.post('http://localhost:3000/addtask',task)
    }
