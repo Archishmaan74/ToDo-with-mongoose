@@ -14,5 +14,6 @@ export class AddtaskComponent {
 
   addTask(task: any){
     this.tdlService.addTask(task).subscribe(task)
+    alert("Task added successfully!")
   }
 }
