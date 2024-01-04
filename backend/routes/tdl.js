@@ -15,6 +15,22 @@ router.get("/display",async(req,res)=>{
     res.send(await TaskModel.find())
 })
 
+router.get('/displayone/:sno', async (req, res) => {
+    try {
+        const task = await TaskModel.findOne({ sno: parseInt(req.params.sno) });
+        
+        if (!task) {
+            return res.status(404).send("Task not found");
+        }
+
+        console.log("Fetching one task...");
+        res.send(task);
+    } catch (err) {
+        console.log("Cannot fetch one task:", err);
+        res.status(500).send("Internal Server Error");
+    }
+});
+
 router.post("/addtask",async(req,res)=>{
     const { sno, task, date, time } = req.body;
 
