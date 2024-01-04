@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { TdlService } from '../tdl.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-edittask',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./edittask.component.css']
 })
 export class EdittaskComponent {
-
+  task: any
+  constructor(private aRoute: ActivatedRoute, private tdlService: TdlService){
+    aRoute.params.subscribe((data)=>{
+    })
+  }
 }
