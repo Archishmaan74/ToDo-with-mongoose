@@ -12,7 +12,7 @@ const routes: Routes = [
     path: 'tasks', component: TasksComponent
   },
   {
-    path: 'SNO', component: EdittaskComponent
+    path: 'tasks/:SNO', component: EdittaskComponent
   },
   {
     path: 'addtask', component: AddtaskComponent
