@@ -12,7 +12,7 @@ let TaskSchema = mongoose.Schema({
 let TaskModel = mongoose.model("tasks", TaskSchema)
 
 router.get("/display",async(req,res)=>{
-    res.send(await TaskModel.find())
+    res.send(await TaskModel.find().sort({sno:1}));
 })
 
 router.get('/displayone/:sno', async (req, res) => {
@@ -56,7 +56,7 @@ router.post("/edittask", async (req, res) => {
   try {
       const updatedTask = await TaskModel.findOneAndUpdate(
           { sno: sno },
-          { task, date, time },
+          { task, date, time},
           { new: true }
       );
 
